@@ -478,4 +478,4 @@ This project is provided as-is for research and educational purposes.
 
 ---
 
-**Last Updated**: January 2024
+**Last Updated**: June 2026
