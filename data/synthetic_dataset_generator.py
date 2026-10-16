@@ -270,7 +270,7 @@ class TWAPEventInjector:
         temp_impact_ratio = participation * 0.005 * aggressive
         
         # Permanent: square-root market impact
-        perm_impact_ratio = 0.001 * np.sqrt(participation) * aggressive
+        perm_impact_ratio = 0.003 * np.sqrt(participation) * aggressive
         
         # Apply to event period
         for i in range(start_idx, end_idx):
@@ -278,7 +278,7 @@ class TWAPEventInjector:
             progress = idx / duration
             
             # Volume increase
-            df.loc[i, 'volume'] *= (1 + participation * 5.0)  # Clear labeled signal for the demo heuristic
+            df.loc[i, 'volume'] += avg_volume * (1 + participation * 5.0)  # Deliberately clear synthetic signature
             
             # Temporary impact (peaks mid-execution)
             temp_factor = 1.0 - ((progress - 0.5) ** 2)
