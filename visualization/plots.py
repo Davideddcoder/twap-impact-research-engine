@@ -165,7 +165,7 @@ class ResultsPlotter:
         """
         fig, axes = plt.subplots(2, 2, figsize=(14, 10))
         
-        # Plot 1: Temporary impact by side
+        # Plot 1: Side-adjusted event move by side
         ax = axes[0, 0]
         buy_impact = results_df[results_df['side'] == 'buy']['event_direction_move_bps']
         sell_impact = results_df[results_df['side'] == 'sell']['event_direction_move_bps']
@@ -175,12 +175,12 @@ class ResultsPlotter:
         ax.set_title('Event-Direction Move (Descriptive)', fontsize=12, fontweight='bold')
         ax.grid(axis='y', alpha=0.3)
         
-        # Plot 2: Duration vs immediate impact
+        # Plot 2: Duration vs event-direction move
         ax = axes[0, 1]
         scatter = ax.scatter(results_df['duration_minutes'], results_df['event_direction_move_bps'],
                             c=results_df['volume_ratio'], cmap='viridis', s=100, alpha=0.6, edgecolors='black')
         ax.set_xlabel('Event Duration (minutes)', fontsize=11, fontweight='bold')
-        ax.set_ylabel('Temporary Impact (bps)', fontsize=11, fontweight='bold')
+        ax.set_ylabel('Side-Adjusted Event Move (bps)', fontsize=11, fontweight='bold')
         ax.set_title('Duration vs Event Move', fontsize=12, fontweight='bold')
         cbar = plt.colorbar(scatter, ax=ax)
         cbar.set_label('Volume Ratio', fontsize=10, fontweight='bold')
