@@ -3,8 +3,10 @@
 **Project name:** TWAP Impact Research Engine — Public Demonstration  
 **Project URL:** https://github.com/Davideddcoder/twap-impact-research-engine
 
-Built a reproducible Python demonstration to explore TWAP-like execution patterns using seeded synthetic OHLCV data. Implemented event injection, a transparent volume-anomaly heuristic, rolling time-series features, and descriptive event-window summaries, with CSV/JSON outputs and automated pipeline checks.
+Built an explainable Python demonstration for studying TWAP-like event detection on seeded synthetic OHLCV data. The workflow injects labeled events, compares smoothed volume with a trailing baseline, reports interpretable volume and directional evidence, and evaluates interval detections across multiple reproducible seeds. Added rolling time-series features, descriptive event-window summaries, and automated checks.
 
-This public project demonstrates the research workflow only. Proprietary production code, parameters, data, and results are excluded to respect confidentiality and compliance obligations related to my work at YIP Capital. The demonstration uses synthetic data and is not a validated trading model or performance claim.
+On a 10-seed synthetic evaluation (50 injected events), the baseline recovered 43 events with 24 false-positive intervals (64.2% precision, 86.0% recall). These figures describe only the synthetic generator and are not real-market performance claims.
 
-**Skills:** Python · pandas · NumPy · Time-series analysis · Market microstructure research · Reproducible data pipelines
+This public demo is not the production model. Proprietary code, parameters, market data, strategies, and performance results are excluded to respect confidentiality and compliance obligations related to my work at YIP Capital.
+
+**Skills:** Python · pandas · NumPy · Time-series analysis · Explainable heuristics · Synthetic market data · Reproducible research
