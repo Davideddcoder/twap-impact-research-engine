@@ -170,7 +170,7 @@ class ResultsPlotter:
         buy_impact = results_df[results_df['side'] == 'buy']['event_direction_move_bps']
         sell_impact = results_df[results_df['side'] == 'sell']['event_direction_move_bps']
         
-        ax.boxplot([buy_impact, sell_impact], labels=['BUY', 'SELL'])
+        ax.boxplot([buy_impact, sell_impact], tick_labels=['BUY', 'SELL'])
         ax.set_ylabel('Side-Adjusted Event Move (bps)', fontsize=11, fontweight='bold')
         ax.set_title('Event-Direction Move (Descriptive)', fontsize=12, fontweight='bold')
         ax.grid(axis='y', alpha=0.3)
