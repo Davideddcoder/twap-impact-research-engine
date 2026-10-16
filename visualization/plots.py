@@ -141,7 +141,7 @@ class ResultsPlotter:
         ax.axhline(0, color='black', linestyle='-', linewidth=1, alpha=0.5)
         ax.set_xlabel('Event Number', fontsize=12, fontweight='bold')
         ax.set_ylabel('Cumulative Return (%)', fontsize=12, fontweight='bold')
-        ax.set_title('Cumulative 1-Hour Forward Returns by Event', fontsize=14, fontweight='bold')
+        ax.set_title('Cumulative Event-Side 1-Hour Returns (Descriptive)', fontsize=14, fontweight='bold')
         ax.legend(fontsize=11, loc='best')
         ax.grid(alpha=0.3)
         
@@ -167,21 +167,21 @@ class ResultsPlotter:
         
         # Plot 1: Temporary impact by side
         ax = axes[0, 0]
-        buy_impact = results_df[results_df['side'] == 'buy']['temporary_impact_bps']
-        sell_impact = results_df[results_df['side'] == 'sell']['temporary_impact_bps']
+        buy_impact = results_df[results_df['side'] == 'buy']['event_direction_move_bps']
+        sell_impact = results_df[results_df['side'] == 'sell']['event_direction_move_bps']
         
         ax.boxplot([buy_impact, sell_impact], labels=['BUY', 'SELL'])
-        ax.set_ylabel('Temporary Impact (bps)', fontsize=11, fontweight='bold')
-        ax.set_title('Temporary Impact Distribution', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Side-Adjusted Event Move (bps)', fontsize=11, fontweight='bold')
+        ax.set_title('Event-Direction Move (Descriptive)', fontsize=12, fontweight='bold')
         ax.grid(axis='y', alpha=0.3)
         
         # Plot 2: Duration vs immediate impact
         ax = axes[0, 1]
-        scatter = ax.scatter(results_df['duration_minutes'], results_df['temporary_impact_bps'],
+        scatter = ax.scatter(results_df['duration_minutes'], results_df['event_direction_move_bps'],
                             c=results_df['volume_ratio'], cmap='viridis', s=100, alpha=0.6, edgecolors='black')
         ax.set_xlabel('Event Duration (minutes)', fontsize=11, fontweight='bold')
         ax.set_ylabel('Temporary Impact (bps)', fontsize=11, fontweight='bold')
-        ax.set_title('Duration vs Impact', fontsize=12, fontweight='bold')
+        ax.set_title('Duration vs Event Move', fontsize=12, fontweight='bold')
         cbar = plt.colorbar(scatter, ax=ax)
         cbar.set_label('Volume Ratio', fontsize=10, fontweight='bold')
         ax.grid(alpha=0.3)
