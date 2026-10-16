@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+data/raw/*.csv
+data/raw/*_events.json
+data/raw/*_summary.json
+results/
