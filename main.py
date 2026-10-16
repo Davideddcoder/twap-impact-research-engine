@@ -24,7 +24,7 @@ def run(args):
         generator.save_dataset(df, events)
     loader = DataLoader()
     market = loader.load_market_data(csv_path)
-    detector = TWAPDetector(volume_threshold=1.8, lookback_window=60, min_event_duration=5)
+    detector = TWAPDetector(volume_threshold=2.2, lookback_window=60, min_event_duration=5)
     detected = detector.detect(market)
     featured = FeatureBuilder(window_size=30).build_features(market)
     results = EventStudyAnalyzer(pre_window=60, post_window=120).analyze_events(featured, detected)
