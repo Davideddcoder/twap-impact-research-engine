@@ -216,12 +216,12 @@ class TWAPEventInjector:
             Event dictionary with parameters
         """
         event = {
-            'start_idx': start_idx,
-            'duration_minutes': duration_minutes,
+            'start_idx': int(start_idx),
+            'duration_minutes': int(duration_minutes),
             'volume_participation': volume_participation,
             'side': side,
             'aggressive_factor': aggressive_factor,
-            'num_slices': duration_minutes,  # One slice per minute
+            'num_slices': int(duration_minutes),  # One slice per minute
             'is_synthetic_event': True,
         }
         return event
@@ -278,7 +278,7 @@ class TWAPEventInjector:
             progress = idx / duration
             
             # Volume increase
-            df.loc[i, 'volume'] *= (1 + participation * 0.5)
+            df.loc[i, 'volume'] *= (1 + participation * 5.0)  # Clear labeled signal for the demo heuristic
             
             # Temporary impact (peaks mid-execution)
             temp_factor = 1.0 - ((progress - 0.5) ** 2)
